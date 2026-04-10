@@ -21,7 +21,7 @@ async function connectWallet() {
 
         // WalletConnect fallback
         const wcProvider = await window.EthereumProvider.init({
-            projectId: "abe45f098d2c4190983c6df5898b9bb4", // replace later
+            projectId: "", // replace later
             chains: [1],
             showQrModal: true
         });
