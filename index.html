@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web3 Gaming Hub</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+
+<!-- WalletConnect v2 -->
+<script src="https://unpkg.com/@walletconnect/ethereum-provider@2.9.1/dist/index.umd.js"></script>
+
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">⚡ Web3 Arcade</div>
+
+        <div class="nav-buttons">
+            <button onclick="loadPage('home')">Home</button>
+            <button onclick="loadPage('games')">Games</button>
+            <button onclick="loadPage('marketplace')">Marketplace</button>
+            <button onclick="loadPage('profile')">Profile</button>
+        </div>
+
+        <button id="connectBtn" onclick="connectWallet()">Connect Wallet</button>
+    </nav>
+
+    <!-- PAGE CONTAINER -->
+    <div id="pageContainer"></div>
+
+</div>
+
+<script src="wallet.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
