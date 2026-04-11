@@ -42,5 +42,22 @@ async function checkTokenGate() {
         return false;
     }
 }
+        // WalletConnect fallback
+        const wcProvider = await window.EthereumProvider.init({
+            projectId: "", // replace later
+            chains: [1],
+            showQrModal: true
+        });
 
-      
+        await wcProvider.enable();
+
+        provider = new ethers.providers.Web3Provider(wcProvider);
+        signer = provider.getSigner();
+
+        const address = await signer.getAddress();
+        window.userAddress = address;
+
+    } catch (err) {
+        console.error(err);
+    }
+}
