@@ -29,12 +29,35 @@ const pages = {
     `
 };
 
-function loadPage(page) {
-    document.getElementById("pageContainer").innerHTML = pages[page];
+async function loadPage(page) {
+    const container = document.getElementById("pageContainer");
 
-    if (page === "profile" && window.userAddress) {
-        document.getElementById("walletAddress").innerText = window.userAddress;
+    // Example: gate marketplace + special mint
+    if (page === "marketplace") {
+
+        if (!window.userAddress) {
+            container.innerHTML = `
+                <div class="card">
+                    <h2>🔒 Connect Wallet Required</h2>
+                </div>
+            `;
+            return;
+        }
+
+        const hasAccess = await checkTokenGate();
+
+        if (!hasAccess) {
+            container.innerHTML = `
+                <div class="card">
+                    <h2>🚫 Access Denied</h2>
+                    <p>You must own FunFart Token #1 to enter.</p>
+                </div>
+            `;
+            return;
+        }
     }
+
+    container.innerHTML = pages[page];
 }
 
 // Load default page
